@@ -1,36 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# next-ssr-scaffold
 
-## Getting Started
+The combination of Next.js, React-query, Zustand and Tailwind
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+* Next.js의 App Router를 사용하기 위해 Redux를 과감하게 포기하고 Zustand 도입
+* 토큰 쿠키를 브라우저에서 사용할 수 없도록 모든 API 호출은 내부 서버를 거쳐가도록 설정
+* 프로덕션 환경에서 정적 파일의 CDN 이용을 위해 assetPrefix 설정
+* lint나 tsc에서 에러 발생시 커밋을 막아주는 husky 설정
+* 빌드 단계에서 필요한 환경변수를 받는 Dockerfile 설정
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Todo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+* Storybook 도입
