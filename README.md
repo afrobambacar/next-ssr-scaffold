@@ -11,15 +11,13 @@ The combination of Next.js, React-query, Zustand and Tailwind
 * lint나 tsc에서 에러 발생시 커밋을 막아주는 husky 설정
 * 빌드 단계에서 필요한 환경변수를 받는 Dockerfile 설정
 
+## 
+
 ## Directory Structure
 
 ```
 src/
 ├─ app/
-│  ├─ pokemons/
-│  │  └─ [id]
-│  │     ├─ page.tsx
-│  │     └─ pokemon.tsx
 │  ├─ globals.css
 │  ├─ layout.tsx
 │  └─ page.tsx
@@ -57,6 +55,14 @@ const mutation = useMutation({
   }
 })
 ```
+
+## API
+
+API 호출은 from client to server to server 방식을 사용합니다. 브라우저에서 호출한 API는 next.js 서버를 호출하고, next.js 서버는 같은 VPC에 있는 API 서버를 호출하는 방식입니다. 이 방식은 accessToken 쿠키를 js로 핸들링 할 수 없게 만들어도 괜찮기 때문에 보안에 유리합니다. 
+
+_libs/apis/routes.ts_ 파일은 API의 목록이 정의되어 있고 URL은 `/api` 프리픽스가 붙어있습니다. 이 요청은 next.js 서버로 전송되고 _middleware.ts_ 파일은 실제 API 서버로 재호출합니다. 이 때 _next.config.ts_ 파일에 정의된대로 `/api/:path*`은 `${process.env.NEXT_PUBLIC_API_HOST}/:path*`로 호출하게 됩니다.
+
+만약 basic auth가 필요한 API를 호출하는 경우 위와 같은 패턴으로 _routes.ts_ 파일의 URL에 `/basic` 프리픽스를 붙여서 사용할 수 있습니다.
 
 ## Todo
 
